@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module';
 import { RolesModule } from './roles/roles.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthorizationsModule } from './authorizations/authorizations.module';
+import { OrganizationsModule } from './organizations/organizations.module';
+import { EquipmentsModule } from './equipments/equipments.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -16,7 +18,7 @@ import { AuthorizationsModule } from './authorizations/authorizations.module';
     "database": "gmao_db",
     "entities": ["dist/**/**.entity{.ts,.js}"],
     "synchronize": true
-  }), UsersModule, RolesModule, AuthorizationsModule],
+  }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule],
   controllers: [AppController],
   providers: [AppService],
 })

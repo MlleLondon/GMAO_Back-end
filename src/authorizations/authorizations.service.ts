@@ -17,8 +17,8 @@ export class AuthorizationsService {
         });
     }
 
-    async getAuthoById(_id : number) : Promise<Authorization[]>{
-        return await this.authoRepository.find({
+    async getAuthoById(_id : number) : Promise<Authorization>{
+        return await this.authoRepository.findOne({
             where:[
                 {id: _id}
             ],

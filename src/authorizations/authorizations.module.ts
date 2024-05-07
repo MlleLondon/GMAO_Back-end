@@ -8,6 +8,6 @@ import { Authorization } from './authorization.entity/authorization.entity';
   imports : [TypeOrmModule.forFeature([Authorization])],
   providers: [AuthorizationsService],
   controllers: [AuthorizationsController],
-  exports : [AuthorizationsService]
+  exports : [AuthorizationsService],
 })
 export class AuthorizationsModule {}

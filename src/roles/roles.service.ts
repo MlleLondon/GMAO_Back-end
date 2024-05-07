@@ -3,10 +3,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Role } from './role.entity/role.entity';
 import { Repository } from 'typeorm';
 import { Authorization } from 'src/authorizations/authorization.entity/authorization.entity';
+import { AuthorizationsService } from 'src/authorizations/authorizations.service';
 
 @Injectable()
 export class RolesService {
-    constructor(@InjectRepository(Role) private roleRepository : Repository<Role>, private authoRepository : Repository<Authorization>) {}
+    constructor(@InjectRepository(Role) private roleRepository : Repository<Role>, private authoService: AuthorizationsService) {}
 
     async getRoles() : Promise<Role[]>{
         const roles= await this.roleRepository.find({
@@ -72,7 +73,7 @@ export class RolesService {
 
         //On récupère les organisations
         for(let i=0; i< authosIds.length; i++){
-            autho= await this.authoRepository.findOneBy({id: authosIds[i]});
+            autho= await this.authoService.getAuthoById(authosIds[i]);
             authos.push(autho);
         }
         //On modifie les authorisations du role récupéré avec le tableau d'authorisations

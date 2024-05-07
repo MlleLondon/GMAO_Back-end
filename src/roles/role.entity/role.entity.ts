@@ -16,7 +16,7 @@ export class Role{
     })
     level : Level;
 
-    @Column({length : 70})
+    @Column({length : 70, unique: true})
     name: string;
 
     @OneToMany( ()=>User, user => user.role)

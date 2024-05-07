@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put } from '@nestjs/common';
 import { RolesService } from './roles.service';
 import { Role } from './role.entity/role.entity';
 
@@ -35,4 +35,34 @@ export class RolesController {
     delete(@Param() params){
         return this.service.deleteRole(params.id);
     }
+
+    @Put(':id/authos')
+    async createRoleAuthosRelation(
+      @Param('id') id: string,
+      @Body() body: { authos: number[] },
+    ) {
+      const roleId = +id;
+      const authosIds = body.authos;
+      try {
+        const updateRole =
+          await this.service.manageAuthosIntoRole(
+            roleId,
+            authosIds,
+          );
+        return {
+          message:
+            'SUCCESS : Relations entre le Role et les Authorisations effectuées !',
+          data: updateRole,
+        };
+      } catch (error) {
+        if (error.status === HttpStatus.NOT_FOUND) {
+          throw new HttpException('Role not found', HttpStatus.NOT_FOUND);
+        }
+        throw new HttpException(
+          'ERREUR lors de la relation entre le Role et les Authorisations !',
+          HttpStatus.INTERNAL_SERVER_ERROR,
+        );
+      }
+    }
+
 }
