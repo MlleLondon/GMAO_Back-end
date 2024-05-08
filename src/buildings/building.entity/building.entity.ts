@@ -2,27 +2,15 @@ import { Status } from "src/variables/enum";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Equipment {
+export class Building {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column({length : 150})
-    name: string;
+    name : string;
 
     @Column({length : 70})
-    type: string;
-
-    @Column('text')
-    description: string;
-
-    @Column({ type: 'date' })
-    manufacturingDate: Date;
-
-    @Column({ type: 'date' })
-    deliveryDate: Date;
-
-    @Column({ type: 'date' })
-    startUpDate: Date;
+    type : string;
 
     @Column({
         type: 'enum',
