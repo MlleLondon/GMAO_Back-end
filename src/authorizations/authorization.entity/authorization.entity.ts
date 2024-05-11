@@ -1,5 +1,5 @@
 import { Role } from "src/roles/role.entity/role.entity";
-import { TableAccess } from "src/variables/enum";
+import { TableAccess, TableTypeAccess } from "src/variables/enum";
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -7,8 +7,12 @@ export class Authorization {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({length : 70})
-    type : string;
+    @Column({
+        type: 'enum',
+        enum: TableTypeAccess,
+        default : TableTypeAccess.READ,
+    })
+    type : TableTypeAccess;
 
     @Column({
         type: 'enum',

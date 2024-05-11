@@ -37,3 +37,10 @@ export enum TableAccess {
     WORK= 'work',
     ALLOW= 'allow',
 }
+
+export enum TableTypeAccess {
+    CREATE= 'create',
+    READ= 'read',
+    UPDATE= 'update',
+    DELETE= 'delete',
+}

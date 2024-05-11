@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Authorization } from './authorization.entity/authorization.entity';
 import { Repository } from 'typeorm';
-import { TableAccess } from 'src/variables/enum';
+import { TableAccess, TableTypeAccess } from 'src/variables/enum';
 import { Role } from 'src/roles/role.entity/role.entity';
 
 @Injectable()
@@ -26,7 +26,7 @@ export class AuthorizationsService {
             order: {tableAccess : 'ASC'}
         });
     }
-    async getAuthosByType(_type : string) : Promise<Authorization[]>{
+    async getAuthosByType(_type : TableTypeAccess) : Promise<Authorization[]>{
         return await this.authoRepository.find({
             where:[
                 {type: _type}

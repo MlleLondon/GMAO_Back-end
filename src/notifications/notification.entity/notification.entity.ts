@@ -1,11 +1,10 @@
-import { TableAccess } from "src/variables/enum";
+import { TableAccess, TableTypeAccess } from "src/variables/enum";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class History {
-
+export class Notification {
     @PrimaryGeneratedColumn()
-    id : number;
+    id: number;
 
     @Column({
         type: 'enum',
@@ -20,11 +19,14 @@ export class History {
     idUser : number;
 
     @Column()
-    updatedAt : Date;
+    notifiedAt : Date;
 
-    @Column('text')
-    oldData: string;
+    @Column({
+        type: 'enum',
+        enum: TableTypeAccess,
+    })
+    type : TableTypeAccess;
 
-    @Column('text')
-    newData: string;
+    @Column({ default: true })
+    readNotification: boolean;
 }

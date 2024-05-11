@@ -9,6 +9,10 @@ import { OrganizationsModule } from './organizations/organizations.module';
 import { EquipmentsModule } from './equipments/equipments.module';
 import { BuildingsModule } from './buildings/buildings.module';
 import { HistoriesModule } from './histories/histories.module';
+import { NotificationsModule } from './notifications/notifications.module';
+import { VendorsModule } from './vendors/vendors.module';
+import { PartsModule } from './parts/parts.module';
+import { PurchasesModule } from './purchases/purchases.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -20,7 +24,7 @@ import { HistoriesModule } from './histories/histories.module';
     "database": "gmao_db",
     "entities": ["dist/**/**.entity{.ts,.js}"],
     "synchronize": true
-  }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule, BuildingsModule, HistoriesModule],
+  }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule, BuildingsModule, HistoriesModule, NotificationsModule, VendorsModule, PartsModule, PurchasesModule],
   controllers: [AppController],
   providers: [AppService],
 })
