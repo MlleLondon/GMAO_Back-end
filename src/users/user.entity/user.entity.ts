@@ -1,3 +1,4 @@
+import { Building } from "src/buildings/building.entity/building.entity";
 import { Role } from "src/roles/role.entity/role.entity";
 import { Status } from "src/variables/enum";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
@@ -34,5 +35,8 @@ export class User {
 
     @ManyToOne( ()=> Role, role =>role.users)
     role: Role;
+
+    @ManyToOne( ()=> Building, building => building.users)
+    building : Building;
 
 }

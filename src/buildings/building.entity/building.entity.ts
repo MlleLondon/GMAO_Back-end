@@ -1,5 +1,7 @@
+import { Organization } from "src/organizations/organization.entity/organization.entity";
+import { User } from "src/users/user.entity/user.entity";
 import { Status } from "src/variables/enum";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Building {
@@ -18,4 +20,10 @@ export class Building {
         default: Status.ACTIVE,
     })
     status : Status;
+
+    @OneToMany( ()=> User, user => user.building)
+    users: User[];
+
+    @ManyToOne( ()=> Organization, organization => organization.buildings)
+    organization : Organization
 }
