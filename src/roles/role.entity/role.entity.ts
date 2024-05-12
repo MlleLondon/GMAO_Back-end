@@ -23,6 +23,6 @@ export class Role{
     users: User[];
 
     @ManyToMany( () => Authorization, authorization => authorization.roles)
-    @JoinTable()
+    @JoinTable({ name: "allow" })
     authorizations : Authorization[]
 }

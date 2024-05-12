@@ -1,3 +1,4 @@
+import { Equipment } from "src/equipments/equipment.entity/equipment.entity";
 import { Organization } from "src/organizations/organization.entity/organization.entity";
 import { User } from "src/users/user.entity/user.entity";
 import { Status } from "src/variables/enum";
@@ -26,4 +27,7 @@ export class Building {
 
     @ManyToOne( ()=> Organization, organization => organization.buildings)
     organization : Organization
+
+    @OneToMany( ()=> Equipment, equipment => equipment.building)
+    equipments: Equipment[];
 }

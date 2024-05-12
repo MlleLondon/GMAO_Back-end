@@ -13,6 +13,9 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { VendorsModule } from './vendors/vendors.module';
 import { PartsModule } from './parts/parts.module';
 import { PurchasesModule } from './purchases/purchases.module';
+import { IncidentTypesModule } from './incident-types/incident-types.module';
+import { WoTypesModule } from './wo-types/wo-types.module';
+import { FrequenciesModule } from './frequencies/frequencies.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -24,7 +27,7 @@ import { PurchasesModule } from './purchases/purchases.module';
     "database": "gmao_db",
     "entities": ["dist/**/**.entity{.ts,.js}"],
     "synchronize": true
-  }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule, BuildingsModule, HistoriesModule, NotificationsModule, VendorsModule, PartsModule, PurchasesModule],
+  }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule, BuildingsModule, HistoriesModule, NotificationsModule, VendorsModule, PartsModule, PurchasesModule, IncidentTypesModule, WoTypesModule, FrequenciesModule],
   controllers: [AppController],
   providers: [AppService],
 })

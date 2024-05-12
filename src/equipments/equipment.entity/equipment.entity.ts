@@ -1,5 +1,7 @@
+import { Building } from "src/buildings/building.entity/building.entity";
+import { Frequency } from "src/frequencies/frequency.entity/frequency.entity";
 import { Status } from "src/variables/enum";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Equipment {
@@ -30,4 +32,10 @@ export class Equipment {
         default: Status.ACTIVE,
     })
     status : Status;
+
+    @ManyToMany( ()=> Building, building => building.equipments)
+    building: Building;
+
+    @OneToMany( () => Frequency, frequency => frequency.equipment)
+    frequencies: Frequency[];
 }

@@ -1,5 +1,7 @@
+import { Purchase } from "src/purchases/purchase.entity/purchase.entity";
 import { Status } from "src/variables/enum";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Vendor } from "src/vendors/vendor.entity/vendor.entity";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Part {
@@ -30,4 +32,10 @@ export class Part {
         default: Status.ACTIVE,
     })
     status : Status;
+
+    @OneToMany( ()=> Purchase, purchase => purchase.part)
+    purchases: Purchase[]
+
+    @ManyToOne( ()=> Vendor, vendor => vendor.parts)
+    vendor: Vendor;
 }
