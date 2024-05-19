@@ -1,10 +1,9 @@
 export enum Status {
-    ACTIVE = 'actif',
-    DISABLED = 'désactivé',
-    IN_PROGRESS = 'en cours',
+    CREATED= 'créé',
     SCHEDULED = 'programmé',
+    IN_PROGRESS = 'en cours',
     COMPLETED = 'terminé',
-    ARCHIVED = 'archivé',
+    CANCELlED = 'annulé',
 }
 
 export enum Level {
@@ -43,4 +42,9 @@ export enum TableTypeAccess {
     READ= 'read',
     UPDATE= 'update',
     DELETE= 'delete',
+}
+
+export enum Priority{
+    URGENT= 'urgent',
+    NOT_URGENT= 'non urgent',
 }

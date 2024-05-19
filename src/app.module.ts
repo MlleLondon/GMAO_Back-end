@@ -1,21 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { RolesModule } from './roles/roles.module';
+import { UsersModule } from './modules/users.module';
+import { RolesModule } from './modules/roles.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthorizationsModule } from './authorizations/authorizations.module';
-import { OrganizationsModule } from './organizations/organizations.module';
-import { EquipmentsModule } from './equipments/equipments.module';
-import { BuildingsModule } from './buildings/buildings.module';
-import { HistoriesModule } from './histories/histories.module';
-import { NotificationsModule } from './notifications/notifications.module';
-import { VendorsModule } from './vendors/vendors.module';
-import { PartsModule } from './parts/parts.module';
-import { PurchasesModule } from './purchases/purchases.module';
-import { IncidentTypesModule } from './incident-types/incident-types.module';
-import { WoTypesModule } from './wo-types/wo-types.module';
-import { FrequenciesModule } from './frequencies/frequencies.module';
+import { AuthorizationsModule } from './modules/authorizations.module';
+import { OrganizationsModule } from './modules/organizations.module';
+import { EquipmentsModule } from './modules/equipments.module';
+import { BuildingsModule } from './modules/buildings.module';
+import { HistoriesModule } from './modules/histories.module';
+import { NotificationsModule } from './modules/notifications.module';
+import { VendorsModule } from './modules/vendors.module';
+import { PartsModule } from './modules/parts.module';
+import { WoTypesModule } from './modules/wo-types.module';
+import { FrequenciesModule } from './modules/frequencies.module';
+import { WorkOrdersModule } from './modules/work-orders.module';
+import { ReportsModule } from './modules/reports.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -27,7 +27,8 @@ import { FrequenciesModule } from './frequencies/frequencies.module';
     "database": "gmao_db",
     "entities": ["dist/**/**.entity{.ts,.js}"],
     "synchronize": true
-  }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule, BuildingsModule, HistoriesModule, NotificationsModule, VendorsModule, PartsModule, PurchasesModule, IncidentTypesModule, WoTypesModule, FrequenciesModule],
+  }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule, BuildingsModule, 
+    HistoriesModule, NotificationsModule, VendorsModule, PartsModule, WoTypesModule, FrequenciesModule, WorkOrdersModule, ReportsModule],
   controllers: [AppController],
   providers: [AppService],
 })
