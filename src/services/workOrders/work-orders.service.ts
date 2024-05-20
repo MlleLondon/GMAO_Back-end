@@ -20,7 +20,7 @@ export class WorkOrdersService {
             where: [
                 { priority: _priority }
             ],
-            order: { creationDate: 'ASC' },
+            order: { creationDate: 'DESC' },
         });
     }
 
@@ -29,7 +29,7 @@ export class WorkOrdersService {
             where: [
                 { status: _status }
             ],
-            order: { creationDate: 'ASC' },
+            order: { creationDate: 'DESC' },
         });
     }
 
@@ -38,7 +38,7 @@ export class WorkOrdersService {
             where: [
                 { name: Like(`%${_search}%`) }
             ],
-            order: { creationDate: 'ASC' },
+            order: { creationDate: 'DESC' },
         });
     }
 

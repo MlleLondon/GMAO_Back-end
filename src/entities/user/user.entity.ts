@@ -1,4 +1,5 @@
 import { Building } from "../building/building.entity";
+import { Intervention } from "../interventions/intervention.entity/intervention.entity";
 import { Role } from "../role/role.entity";
 import { WorkOrder } from "../workOrder/work-order.entity";
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -37,5 +38,8 @@ export class User {
 
     @OneToMany( ()=> WorkOrder, workorders => workorders.user)
     workorders : WorkOrder[];
+
+    @OneToMany( ()=> Intervention, intervention => intervention.user)
+    interventions : Intervention[];
 
 }

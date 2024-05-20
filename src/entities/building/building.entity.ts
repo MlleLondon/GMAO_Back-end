@@ -25,4 +25,5 @@ export class Building {
 
     @OneToMany( ()=> Equipment, equipment => equipment.building)
     equipments: Equipment[];
+
 }

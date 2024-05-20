@@ -16,6 +16,7 @@ import { WoTypesModule } from './modules/wo-types.module';
 import { FrequenciesModule } from './modules/frequencies.module';
 import { WorkOrdersModule } from './modules/work-orders.module';
 import { ReportsModule } from './modules/reports.module';
+import { InterventionsModule } from './modules/interventions.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -28,7 +29,8 @@ import { ReportsModule } from './modules/reports.module';
     "entities": ["dist/**/**.entity{.ts,.js}"],
     "synchronize": true
   }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule, BuildingsModule, 
-    HistoriesModule, NotificationsModule, VendorsModule, PartsModule, WoTypesModule, FrequenciesModule, WorkOrdersModule, ReportsModule],
+    HistoriesModule, NotificationsModule, VendorsModule, PartsModule, WoTypesModule, FrequenciesModule, WorkOrdersModule, ReportsModule,
+    InterventionsModule],
   controllers: [AppController],
   providers: [AppService],
 })

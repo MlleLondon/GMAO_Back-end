@@ -2,7 +2,9 @@ import { Equipment } from "../equipment/equipment.entity";
 import { User } from "../user/user.entity";
 import { Priority, Status } from "src/variables/enum";
 import { WoType } from "../woType/wo-type.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Report } from "../report/report.entity";
+import { Intervention } from "../interventions/intervention.entity/intervention.entity";
 
 @Entity()
 export class WorkOrder {
@@ -49,4 +51,10 @@ export class WorkOrder {
 
     @ManyToOne( ()=> Equipment, equipment =>equipment.workorders)
     equipment: Equipment;
+
+    @OneToMany( ()=> Report, report => report.workOrder)
+    reports: Report[];
+
+    @OneToMany( ()=> Intervention, intervention => intervention.workOrder)
+    interventions: Intervention[];
 }

@@ -9,7 +9,7 @@ export class FrequenciesService {
 
     async getFrequencies() : Promise<Frequency[]> {
         return await this.frenquencyRepository.find({
-            order: {maintenanceDate : 'ASC'},
+            order: {maintenanceDate : 'DESC'},
         });
     }
 
@@ -18,14 +18,14 @@ export class FrequenciesService {
             where : [
                 {maintenanceDate : _date}
             ],
-            order: {maintenanceDate : 'ASC'},
+            order: {maintenanceDate : 'DESC'},
         });
     }
 
     async getFrequenciesBySearchDate(_search : string) : Promise<Frequency[]> {
         return await this.frenquencyRepository.createQueryBuilder("frequency")
             .where("DATE_FORMAT(frequency.maintenanceDate, '%Y-%m-%d') LIKE :search", { search: `%${_search}%` })
-            .orderBy("frequency.maintenanceDate", "ASC")
+            .orderBy("frequency.maintenanceDate", "DESC")
             .getMany();
     }
 

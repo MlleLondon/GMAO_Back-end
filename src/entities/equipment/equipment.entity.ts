@@ -1,7 +1,8 @@
 import { Building } from "../building/building.entity";
 import { Frequency } from "../frequency/frequency.entity";
+import { Part } from "../part/part.entity";
 import { WorkOrder } from "../workOrder/work-order.entity";
-import { Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Equipment {
@@ -37,4 +38,8 @@ export class Equipment {
 
     @OneToMany( ()=> WorkOrder, workorders => workorders.equipment)
     workorders : WorkOrder[];
+
+    @ManyToMany( ()=> Part, parts => parts.equipments)
+    @JoinTable({name: 'utilized'})
+    parts : Part[];
 }

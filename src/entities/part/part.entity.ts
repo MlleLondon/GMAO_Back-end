@@ -1,3 +1,4 @@
+import { Equipment } from "../equipment/equipment.entity";
 import { Vendor } from "../vendor/vendor.entity";
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -29,4 +30,7 @@ export class Part {
 
     @ManyToMany( ()=> Vendor, vendor => vendor.parts)
     vendors: Vendor[];
+
+    @ManyToMany( ()=> Equipment, equipment => equipment.parts)
+    equipments : Equipment[];
 }
