@@ -1,7 +1,8 @@
+import { PickedPart } from "src/entities/picked-part.entity/picked-part.entity";
 import { User } from "src/entities/user/user.entity";
 import { WorkOrder } from "src/entities/workOrder/work-order.entity";
 import { Status } from "src/variables/enum";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Intervention {
@@ -29,4 +30,7 @@ export class Intervention {
 
     @ManyToOne( ()=> User, user =>user.interventions)
     user: User;
+
+    @OneToMany(() => PickedPart, pickedPart => pickedPart.intervention)
+    pickedParts: PickedPart[];
 }
