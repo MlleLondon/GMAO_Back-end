@@ -30,6 +30,17 @@ export class UsersService {
         delete user.password;
         return await user;
     }
+    async getUserByLogin(email : string, password: string) : Promise<User>{
+        const user= await this.userRepository.findOne({
+            where : [
+                {email: email},
+                {password : password},
+            ],
+            relations: ['role'],
+            order : {name: 'ASC'}
+        })
+        return await user;
+    }
 
     async getUsersBySearch(search : string) : Promise<User[]>{
         const users = await this.userRepository.find({

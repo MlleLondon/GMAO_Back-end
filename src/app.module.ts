@@ -30,7 +30,7 @@ import { InterventionsModule } from './modules/interventions.module';
     "synchronize": true
   }), UsersModule, RolesModule, AuthorizationsModule, OrganizationsModule, EquipmentsModule, BuildingsModule, 
     HistoriesModule, NotificationsModule, VendorsModule, PartsModule, WoTypesModule, FrequenciesModule, WorkOrdersModule, ReportsModule,
-    InterventionsModule],
+    InterventionsModule,],
   controllers: [AppController],
   providers: [AppService],
 })
